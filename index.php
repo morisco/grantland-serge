@@ -33,6 +33,7 @@
                 <div id="play-button"></div>
             </div>
             <div id="chapter-nav">
+                <div id="mobile-chapters">View Chapters</div>
                 <div class="chapters">
                     <div class="chapter" data-chapter-id="1">
                         <div class="chapter-wrapper">
@@ -40,6 +41,7 @@
                             <div class="title">Part One</div>
                             <div class="excerpt">Serge visits his childhood home and something else</div>
                             <div class="runtime">11:15</div>
+                            <div class="cb"></div>
                         </div>
                     </div>
                     <div class="chapter" data-chapter-id="2">
@@ -48,6 +50,7 @@
                             <div class="title">Part Two</div>
                             <div class="excerpt">People in the States don’t know I have a daughter...</div>
                             <div class="runtime">14:47</div>
+                            <div class="cb"></div>
                         </div>
                     </div>
                     <div class="chapter" data-chapter-id="3">
@@ -56,6 +59,7 @@
                             <div class="title">Part Three</div>
                             <div class="excerpt">Serge trapped in a bar</div>
                             <div class="runtime">14:47</div>
+                            <div class="cb"></div>
                         </div>
                     </div>
                     <div class="chapter" data-chapter-id="4">
@@ -64,6 +68,7 @@
                             <div class="title">Part Four</div>
                             <div class="excerpt">Sacrifice is nothing to me</div>
                             <div class="runtime">14:47</div>
+                            <div class="cb"></div>
                         </div>
                     </div>
                     <div class="chapter" data-chapter-id="5">
@@ -72,6 +77,7 @@
                             <div class="title">Part Five</div>
                             <div class="excerpt">Serge visits his childhood home and something else</div>
                             <div class="runtime">14:47</div>
+                            <div class="cb"></div>
                         </div>
                     </div>
                 </div>

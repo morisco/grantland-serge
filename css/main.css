@@ -1,19 +1,25 @@
 *{ padding:0; margin:0; box-sizing:border-box; -webkit-box-sizing:border-box; -mox-box-sizing:border-box; }
 
-body{ border:0px; }
+body{ border:0px; background:#000; }
 
 .cb{ clear:both; }
 
-header{ width:100%; position:fixed; background:#000; height:35px; z-index:10; font-family:'baltomedium'; }
+header{ width:100%; position:fixed; background:#000; height:35px; top:0px; z-index:10; transition:top 0.5s; -webkit-transition:top 0.5s; }
 header a.back{ font-size:12px; letter-spacing:1.5px; color:#fff; margin-left:15px; padding:13px 0px; display:inline-block; z-index:1;}
-header a.grantland-logo{ display:block; position:relative; float:left; padding:10px 15px; width:120px; }
+header a.grantland-logo{ display:block; position:relative; float:left; padding:8px 10px 8px 15px; width:120px; }
 header a.facebook, header a.twitter{ display:block; float:right; margin:8px 10px 0px 0px;  width:15px; height:15px; z-index:1;}}
 header .title{ display:inline-block; position:absolute; width:100%; top:0px; left:0px; text-align:center; font-size:20px; color:#fff; text-transform:uppercase; padding:8px 0px; z-index:0; display:none; font-family:'YWFTExpos'; letter-spacing:0px;}
 
+header.hidden{ top: -30px; }
+
+
 #player {
   width:100%;
-  height:100vh;
-  position:relative;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  position:fixed;
   overflow:hidden;
 }
 
@@ -40,7 +46,7 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
   left:0px;
   right:0px;
   background:url(../img/opener.jpg);
-  height:calc(100vh - 150px);
+  height:calc(100% - 150px);
   width:100%;
   z-index:1;
   background-size:cover;
@@ -96,7 +102,7 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
   right:0;
   bottom:0;
   width:100%;
-  height:100vh;
+  height:100%;
   z-index:0;
   margin:0;
   opacity:0;
@@ -124,6 +130,10 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
   bottom: -150px;
   transition:all 0.25s ease-in-out;
   -webkit-transition:all 0.25s ease-in-out;
+}
+
+#player #chapter-nav #mobile-chapters{
+  display:none;
 }
 
 #player #chapter-nav .chapters{
@@ -191,8 +201,8 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
   position:absolute;
   width:40%;
   max-width:420px;
-  height:100vh;
-  bottom: calc(-100vh + 150px);
+  height:100%;
+  bottom: calc(-100% + 150px);
   left:0px;
   background:#000;
   z-index:3;
@@ -202,7 +212,7 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
 }
 
 #player #related-articles.hidden{
-  bottom:-100vh;
+  bottom:-100%;
   transition:all 0.25s ease-in-out;
   -webkit-transition:all 0.25s ease-in-out;
 
@@ -215,7 +225,7 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
 }
 
 #player #related-articles.over{
-  bottom:calc(-100vh + 205px);
+  bottom:calc(-100% + 205px);
 }
 
 #player #related-articles.over .hed{
@@ -229,7 +239,7 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
 #player #related-articles .articles{
   position:relative;
   width:calc(100% - 25px);
-  height:calc(100vh - 250px);
+  height:calc(100% - 250px);
   padding:20px 18px;
   overflow:scroll;
 }
@@ -392,4 +402,155 @@ header .title{ display:inline-block; position:absolute; width:100%; top:0px; lef
 
 #player #related-articles.open .headshot{
   top:25px ;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  header a.grantland-logo{
+    padding:0px 10px;
+  }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  and (orientation : portrait)  {
+  #player #poster{
+    height:calc(100% - 140px);
+  }
+
+  header a.grantland-logo{
+    padding:0px 10px;
+  }
+
+  #player #related-articles{
+    width:45%;
+    margin:10px 20px 10px 0;
+    bottom:calc(-100% + 140px);
+  }
+
+  #player #related-articles.hidden{
+    bottom:-102%;
+  }
+
+  #player #related-articles.open{
+    bottom:-40px;
+  }
+
+  #player #related-articles.open .headshot{
+    top:15px;
+  }
+
+  #player #related-articles.over{
+    bottom:calc(-100% + 190px);
+  }
+
+  #player .hed{
+    margin:10px 0;
+  }
+
+  #player .hed p .break{
+    display:inline;
+  }
+
+  #player .hed p{
+    margin:0 0 5px 0;
+  }
+
+  #player #chapter-nav .chapters{
+    width:calc(100% - 370px);
+  }
+
+  #player .hed p.byline{
+    margin:5px 0;
+  }
+
+  #player #chapter-nav .chapters{
+    height:130px;
+    margin:10px 20px 10px 0;
+  }
+
+  #player #chapter-nav.over .chapters{
+    height:180px;
+  }
+
+  #player #chapter-nav .chapters .chapter{
+    padding:0 0 0 10px;
+  }
+
+  #player #chapter-nav .chapters .chapter .chapter-wrapper .title{
+    font-size:13px;
+  }
+
+  #player #chapter-nav .chapters .chapter .chapter-wrapper .excerpt{
+    font-size:11px;
+  }
+}
+
+@media only screen and (min-device-width : 300px) and (max-device-width : 667px){
+  #player #related-articles{
+    display:none;
+  }
+
+  #player #chapter-nav,
+  #player #chapter-nav.hidden,
+  #player #chapter-nav.over{
+    bottom:calc(-100% + 60px);
+    height:calc(100% - 60px);
+  }
+
+  #player #chapter-nav.open{
+    bottom:0;
+  }
+
+  #player #video #play-button{
+    margin-top:-15.5px;
+  }
+
+  #player #poster{
+    height:100%;
+  }
+
+  #player #chapter-nav .chapters{
+    width:calc(100% - 10px);
+    margin:10px 20px 10px 0px
+  }
+
+  #player #chapter-nav.over .chapters .chapter .title{
+    font-size:12px;
+  }
+
+  #player #chapter-nav.over .chapters .chapter .excerpt{
+    font-size:11px;
+  }
+
+  #player #chapter-nav .chapters .chapter{
+    width:100%;
+  }
+
+  #player #chapter-nav .chapters .chapter .chapter-wrapper{
+    max-width:100%;
+    height:19%;
+    margin-bottom:2%;
+  }
+
+  #player #chapter-nav .chapters .chapter .chapter-wrapper img{
+    max-width:40%;
+    float:left;
+    margin-right:3%;
+  }
+
+
+  #player #chapter-nav #mobile-chapters{
+    display:block;
+    position:absolute;
+    top:-22px;
+    height:22px;
+    right:5px;
+    background:#000;
+    color:rgb(128,128,128);
+    font-size:12px;
+    text-transform:uppercase;
+    font-weight:500;
+    padding:5px 10px 0px;
+    letter-spacing:0.03em;
+    line-height:100%;
+  }
+
 }

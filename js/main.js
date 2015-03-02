@@ -2,7 +2,13 @@
 
 var SERGE = SERGE || {
 
+  tablet : false,
+
+  mobile : false,
+
   mouseTimeout : false,
+
+  videoStarted : false,
 
   initPlayer: function() {
     SERGE.initEvents();
@@ -12,10 +18,15 @@ var SERGE = SERGE || {
   initEvents: function() {
     $('#related-articles .more-serge').on('click',SERGE.showRelated);
     $('#play-button').on('click',SERGE.playVideo);
-    $('.mousetrap').on('click',SERGE.playVideo);
+    if(SERGE.tablet){
+      $('.mousetrap').on('click',SERGE.tabletControl);
+    } else{
+      $('.mousetrap').on('click',SERGE.playVideo);
+    }
     $('#chapter-nav').on('mouseenter', SERGE.expandChapters);
     $('#chapter-nav').on('mouseleave',SERGE.collapseChapters);
     $('#chapter-nav .chapter').on('click',SERGE.swapVideos);
+    $('#chapter-nav #mobile-chapters').on('click',SERGE.showMobile);
   },
 
   initVideo: function(){
@@ -38,8 +49,16 @@ var SERGE = SERGE || {
     },timeout);
   },
 
+  tabletControl: function() {
+    if(SERGE.videoStarted){
+      SERGE.hidePanel();
+    } else{
+      SERGE.playVideo();
+    }
+  },
+
   playVideo: function(event) {
-    if($('#play-button').hasClass('playing')){
+    if(SERGE.videoStarted){
       SERGE.pauseVideo();
       return;
     }
@@ -49,10 +68,12 @@ var SERGE = SERGE || {
     SERGE.transition($('#poster'),'hidden',500,'on');
     SERGE.transition($('#video iframe'),'playing',0,'on');
     SERGE.videoPlayer.api('play');
+    SERGE.videoStarted = true;
     $(document).off('mousemove.video_playing').on('mousemove.video_playing',SERGE.mouseMove);
   },
 
   pauseVideo: function(){
+    SERGE.videoStarted = false;
     SERGE.videoPlayer.api('pause');
     SERGE.transition($('#play-button'),'playing',0,'off');
   },
@@ -71,6 +92,7 @@ var SERGE = SERGE || {
       SERGE.transition($('#related-articles'),'hidden',0,'on');
       SERGE.transition($('#chapter-nav'),'hidden',0,'on');
     }
+    SERGE.transition($('header'),'hidden',0,'on');
     SERGE.transition($('#play-button'),'visible',0,'off');
 
   },
@@ -78,11 +100,13 @@ var SERGE = SERGE || {
   showPanel: function() {
     SERGE.transition($('#play-button'),'visible',0,'on');
     SERGE.transition($('#chapter-nav'),'hidden',0,'off');
+    SERGE.transition($('header'),'hidden',0,'off');
     SERGE.transition($('#related-articles'),'hidden',0,'off');
   },
 
   mouseMove: function() {
     SERGE.showPanel();
+    if(SERGE.tablet){ return; }
     window.clearTimeout(SERGE.mouseTimeout);
     SERGE.mouseTimeout = window.setTimeout(function() {
       if(!$('#chapter-nav').is(":hover") && !$('#related-articles').is(":hover")){
@@ -105,12 +129,22 @@ var SERGE = SERGE || {
 
   swapVideos: function(event) {
     alert( 'Play chapter ' + $(event.target).closest('.chapter').attr('data-chapter-id'));
+  },
+
+  showMobile: function() {
+    SERGE.transition($('#chapter-nav'),'open',0);
   }
 
 }
 
 $(document).ready(function(){
   SERGE.initPlayer();
+  if (navigator.userAgent.match(/(iPad)/)) {
+    SERGE.tablet = true;
+    // $('body, #player').css('height', $(window).outerHeight());
+  } else if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/)) {
+    SERGE.mobile = true;
+  }
 });
 
 }(jQuery));
