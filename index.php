@@ -87,8 +87,8 @@
             <div id="related-articles">
                 <div class="hed-wrapper">
                     <div class="hed">
-                        <p>Serge Ibaka left his homeland <span class="break">to make it in the NBA.</span></p>
-                        <p>He returned to make a difference.</p>
+                        <p>Serge Ibaka left his homeland <span class="break">to make it in the NBA.</span><span class="break">He returned to make a difference.</span></p>
+
                         <p class="byline">directed by ADAM HOOTNICK</p>
                         <a href="#" class="more-serge">more on serge<div class="arrow"></div></a>
                     </div>
