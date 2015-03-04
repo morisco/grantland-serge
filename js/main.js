@@ -63,6 +63,7 @@ var SERGE = SERGE || {
       return;
     }
     SERGE.hidePanel();
+    SERGE.transition($('.header-title'),'visible',0,'on');
     SERGE.transition($('#play-button'),'playing',0,'on');
     SERGE.transition($('#poster'),'playing',0,'on');
     SERGE.transition($('#poster'),'hidden',500,'on');
@@ -128,10 +129,13 @@ var SERGE = SERGE || {
   },
 
   swapVideos: function(event) {
+    $('.chapter.active').removeClass('active');
+    $(event.target).closest('.chapter').addClass('active');
     alert( 'Play chapter ' + $(event.target).closest('.chapter').attr('data-chapter-id'));
   },
 
-  showMobile: function() {
+  showMobile: function(event) {
+    event.preventDefault();
     SERGE.transition($('#chapter-nav'),'open',0);
   }
 
